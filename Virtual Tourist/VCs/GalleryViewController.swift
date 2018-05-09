@@ -106,8 +106,10 @@ class GalleryViewController : ViewController, MKMapViewDelegate {
         
     }
     
+   
     func deleteItem(indexPath:IndexPath) {
         photos?.remove(at: indexPath.row)
+        flikrCollection.reloadData()
         let photo = fetchedResultsController.object(at: indexPath)
         dataLord.viewContext.delete(photo)
         try? dataLord.viewContext.save()
@@ -165,7 +167,7 @@ extension GalleryViewController:NSFetchedResultsControllerDelegate {
             //flikrCollection.insertItems(at: [newIndexPath!])
             break
         case .delete:
-          flikrCollection.deleteItems(at: [indexPath!])
+         // flikrCollection.deleteItems(at: [indexPath!])
             break
         case .update:
            //flikrCollection.reloadItems(at: [indexPath!])
